@@ -15,6 +15,8 @@
 * ビューのslim利用
   - slim-rails
   - html2slim
+* 画像サイズの変更
+  - mini_magick
 * その他bootstrapなど
 
 機能
