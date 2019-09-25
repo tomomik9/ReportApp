@@ -1,0 +1,9 @@
+.comment
+  p
+    strong
+      = t('activerecord.attributes.comment.title')
+    = comment.title
+  p
+    strong
+      = t('activerecord.attributes.comment.body')
+    = simple_format comment.body

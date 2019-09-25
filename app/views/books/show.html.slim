@@ -1,0 +1,28 @@
+p#notice
+  = notice
+p
+  strong
+    = t('activerecord.attributes.book.title')
+    | :
+  = @book.title
+p
+  strong
+    = t('activerecord.attributes.book.memo')
+    | :
+  = simple_format(h(@book.memo), {}, sanitize: false, wrapper_tag: "div")
+p
+  strong
+    = t('activerecord.attributes.book.author')
+    | :
+  = @book.author
+p
+  strong
+    = t('activerecord.attributes.book.picture')
+    | :
+  = image_tag(@book.picture_url) if @book.picture.present?
+= link_to t('comments.index.New Comment'), [:new, @book, :comment]
+= link_to t('comments.index.Comments'), [@book, :comments]
+= render @book.comments
+= link_to t('scaffold.edit'), edit_book_path(@book)
+|  | 
+= link_to t('scaffold.back'), books_path
