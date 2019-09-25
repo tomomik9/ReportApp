@@ -3,4 +3,6 @@ class Book < ApplicationRecord
   include Commentable
   validates :title, presence: true
   validates :memo, presence: true
+  scope :recent, -> { order(created_at: :desc) }
+
 end
