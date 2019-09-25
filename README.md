@@ -20,7 +20,7 @@
 * 一覧画面に検索機能の追加
   - Ransack
 * メイラー機能
- - letter_opener
+  - letter_opener
 * その他bootstrapなど
 
 機能
