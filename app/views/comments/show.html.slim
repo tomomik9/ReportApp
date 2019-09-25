@@ -1,0 +1,13 @@
+p
+  strong
+    = t('activerecord.attributes.comment.title')
+    | :
+  = @comment.title
+p
+  strong
+    = t('activerecord.attributes.comment.body')
+    | :
+  = simple_format(h(@comment.body), {}, sanitize: false, wrapper_tag: "div")
+= link_to t('scaffold.edit'), [:edit, @commentable, @comment]
+|  | 
+= link_to t('scaffold.back'), [@commentable, :comments]

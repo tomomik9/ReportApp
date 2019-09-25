@@ -74,3 +74,7 @@ gem 'mini_magick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'kaminari-i18n'
+gem 'slim-rails'
+gem 'html2slim'
+gem 'bootstrap'
+

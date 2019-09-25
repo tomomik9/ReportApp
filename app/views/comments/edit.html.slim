@@ -1,0 +1,6 @@
+h1
+  = t('.Editing Comment')
+= render 'form', comment: @comment, commentable: @commentable
+= link_to t('scaffold.show'), [@commentable, @comment]
+|  | 
+= link_to t('scaffold.back'), [@commentable, :comments]

@@ -1,0 +1,4 @@
+h1
+  = t('comments.index.New Comment')
+= render 'form', comment: @comment, commentable: @commentable
+= link_to t('scaffold.back'), [@commentable, @comment]
