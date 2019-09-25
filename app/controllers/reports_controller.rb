@@ -4,7 +4,8 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.page(params[:page]).per(10)
+    @q = Report.ransack(params[:q])
+    @reports = @q.result(distinct: true).recent.page(params[:page]).per(10)
   end
 
   # GET /reports/1
