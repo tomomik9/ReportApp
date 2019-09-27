@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_commentable
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: %i(edit update destroy)
 
   # GET /comments
   # GET /comments.json
@@ -65,5 +66,13 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:title, :body)
+    end
+
+    def ensure_correct_user
+      set_comment
+      if @comment.user_id != current_user.id
+        flash[:notice] = "権限がありません"
+        redirect_to [@commentable, @comment]
+      end
     end
 end
