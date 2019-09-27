@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: %i(edit update destroy)
 
   # GET /books
   # GET /books.json
@@ -72,5 +73,13 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :memo, :author, :picture)
+    end
+
+    def ensure_correct_user
+      set_book
+      if @book.user_id != current_user.id
+        flash[:notice] = "権限がありません"
+        redirect_to @book
+      end
     end
 end
