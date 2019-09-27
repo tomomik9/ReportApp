@@ -16,12 +16,14 @@ table.table.table-hover
           = comment.title
         td
           = comment.body
-        td
-          = link_to t('scaffold.show'), [@commentable, comment]
-        td
-          = link_to t('scaffold.edit'), [:edit, @commentable, comment]
-        td
-          = link_to t('scaffold.destroy'), [@commentable, comment], method: :delete, data: { confirm: t('scaffold.confirm') }
+
+        - if comment.user_id == current_user.id
+          td
+            = link_to t('scaffold.show'), [@commentable, comment]
+          td
+            = link_to t('scaffold.edit'), [:edit, @commentable, comment]
+          td
+            = link_to t('scaffold.destroy'), [@commentable, comment], method: :delete, data: { confirm: t('scaffold.confirm') }
 br
 = link_to t('.New Comment'), [:new, @commentable, :comment]
 = link_to t('scaffold.back'), @commentable
