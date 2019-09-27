@@ -34,12 +34,13 @@ table.table.table-hover
           = book.author
         td
           = book.picture
-        td
-          = link_to t('scaffold.show'), book
-        td
-          = link_to t('scaffold.edit'), edit_book_path(book)
-        td
-          = link_to t('scaffold.destroy'), book, method: :delete, data: { confirm: t('scaffold.confirm') }
+        - if book.user_id == current_user.id
+          td
+            = link_to t('scaffold.show'), book
+          td
+            = link_to t('scaffold.edit'), edit_book_path(book)
+          td
+            = link_to t('scaffold.destroy'), book, method: :delete, data: { confirm: t('scaffold.confirm') }
 = paginate @books
 br
 .mb-3
